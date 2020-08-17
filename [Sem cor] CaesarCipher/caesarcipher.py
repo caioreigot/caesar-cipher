@@ -1,8 +1,19 @@
 # Caesar Cipher / Cifra de César [Descriptografar/Criptografar/Brute Force]
-# Programa feito por: [https://github.com/caiorodrgues]
+# Programa feito por: [https://github.com/caioreigot]
 # Obrigado por usar!
 
+import os
+
+def limparConsole():
+	if (os.name == 'nt'):
+		os.system('cls')
+	else:
+		os.system('clear')
+
 def Descriptografar():
+
+    print("> Descriptografar")
+    print("")
 
     try:
         temp = int(input("[!] Digite a chave/rot: "))
@@ -73,6 +84,9 @@ def Descriptografar():
 
 def Criptografar():
 
+    print("> Criptografar")
+    print("")
+
     try:
         temp = int(input("[!] Chave de criptografia: "))
 
@@ -141,6 +155,7 @@ def Criptografar():
 
 def BruteForce():
 
+    print("> Bruteforce")
     print("")
     print('[!] Digite "help" para ver como usar')
     temp = input("[!] Escolha um range de chaves com um espaço entre os dois: ")
@@ -244,6 +259,8 @@ def Menu():
 
 def Main():
 
+    limparConsole()
+
     Menu()
     escolha = 0
 
@@ -253,6 +270,7 @@ def Main():
         except:
             print("Insira um número válido")
         if (escolha in [1, 2, 3, 4]):
+            limparConsole()
             break
         else:
             print("[!] Digite um número válido (1, 2, 3 ou 4)")
