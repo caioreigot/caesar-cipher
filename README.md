@@ -6,6 +6,6 @@
 Programa que criptografa/descriptografa e faz brute force em uma Cifra de César.
 
 ## Observação
-As cores para o terminal do código foram feitas para terminal de linux,<br>
+As cores do código foram feitas para terminal de linux,<br>
 não são compatíveis em alguns terminais como o Prompt de Comando do Windows,<br>
 portanto, use o código [Sem cor] caso o [Colorido] não funcione!
