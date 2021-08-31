@@ -269,7 +269,7 @@ def BruteForce():
 def Menu():
 
     print("")
-    print(GREEN + "Caesar Cipher, por: caiorodrgues" + RESET)
+    print(GREEN + "Caesar Cipher, por: caioreigot" + RESET)
     print("------------------------")
     print("|" + GREEN + " [1] " + RESET + "Criptografar     |")
     print("|" + GREEN + " [2] " + RESET + "Descriptografar  |")
