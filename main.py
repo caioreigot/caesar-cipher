@@ -1,42 +1,42 @@
-# Caesar Cipher / Cifra de César [Descriptografar/Criptografar/Brute Force]
-# Programa feito por: [https://github.com/caioreigot]
-# Obrigado por usar!
-
 import os
+from utils.Menu import Menu
+import utils.Colors as c
 
 def limparConsole():
-	if (os.name == 'nt'):
-		os.system('cls')
-	else:
-		os.system('clear')
+    os.system('cls') if os.name == 'nt' else os.system('clear')
 
 def Descriptografar():
-
-    print("> Descriptografar")
-    print("")
+    print(f"{c.GREEN}> Descriptografar{c.RESET}\n")
 
     try:
-        temp = int(input("[!] Digite a chave/rot: "))
+        temp = int(input(f"{c.GREEN}[!]{c.RESET} Digite a chave/rot: "))
 
-         # É possível usar a operação "%" para isso, porém quis exemplificar melhor
+        # É possível usar a operação "%" para isso, porém quis exemplificar melhor
         while temp > 26:
             temp = temp - 26
             rot = temp
 
         if temp <= 26:
             rot = temp
+        
+        print("")
+
     except:
-        print("Só é aceito números como entrada para a chave")    
+        print(f"{c.RED}[!]{c.RESET} Só é aceito números como entrada para a chave")
 
-    mensagem = input("[!] Digite a mensagem criptografada: ")
-
+    try:
+        mensagem = input(f"{c.GREEN}[!]{c.RESET} Digite a mensagem criptografada: ")
+    except:
+        print(f"{c.RED}[!]{c.RESET} Ocorreu um erro com a leitura de sua mensagem") 
+  
     # 'a' na posição ASCII = 97
     # 'A' na posição ASCII = 65
     # Diferença dos dois: 32
     # Alfabeto maiusculo em ASCII: 65 a 90
     # Alfabeto minusculo em ASCII: 97 a 122
 
-    print("[!] Mensagem descriptografada: ", end="")
+    print(f"{c.GREEN}[!]{c.RESET} Mensagem descriptografada: ", end="")
+    
     for elem in mensagem:
         if elem == " ":
             print(" ", end="")
@@ -44,7 +44,7 @@ def Descriptografar():
         elif (ord(elem) <= ord('Z')) and (ord(elem) >= ord('A')):
             temp = (ord(elem) - rot)
 
-            # É possível usar a operação "%" para isso, porém quis exemplificar melhor
+            # Possível usar a operação "%"
             if temp < 65:
                 while temp < 65:
                     temp = (ord(elem) - rot) + 26
@@ -56,7 +56,7 @@ def Descriptografar():
         elif (ord(elem) <= ord('z')) and (ord(elem) >= ord('a')):
             temp = (ord(elem) - rot)
 
-            # É possível usar a operação "%" para isso, porém quis exemplificar melhor
+            # Possível usar a operação "%"
             if temp < 97:
                 while temp < 97:
                     temp = (ord(elem) - rot) + 26
@@ -71,36 +71,39 @@ def Descriptografar():
 
     print("")
 
-    continuar = input("\n" + "[!] Tecle ENTER para voltar ao menu ou digite 'exit' para sair: ")
+    continuar = input("\n" + f"{c.GREEN}[!]{c.RESET} Tecle ENTER para voltar ao menu ou digite 'exit' para sair: ")
     continuar.lower()
     if continuar == "":
         Main()
     elif continuar == "exit":
         Sair()
     else:
-        print("[!] Comando inválido, voltando ao menu...")
-        print("")
+        print(f"{c.RED}[!]{c.RESET} Comando inválido, voltando ao menu...\n")
         Main()
 
 def Criptografar():
-
-    print("> Criptografar")
-    print("")
+    print(f"{c.GREEN}> Criptografar{c.RESET}\n")
 
     try:
-        temp = int(input("[!] Chave de criptografia: "))
-
-        # É possível usar a operação "%" para isso, porém quis exemplificar melhor
+        temp = int(input(f"{c.GREEN}[!]{c.RESET} Chave de criptografia: "))
+        
+        # É possivel usar a operação "%"
         while temp > 26:
             temp = temp - 26
             rot = temp
 
         if temp <= 26:
             rot = temp
-    except:
-        print("Só é aceito números como entrada para a chave")
+        
+        print("")
 
-    mensagem = input("[!] Digite a mensagem: ")
+    except:
+        print(f"{c.RED}[!]{c.RESET} Só é aceito números como entrada para a chave\n")
+
+    try:
+        mensagem = input(f"{c.GREEN}[!]{c.RESET} Digite a mensagem: ")
+    except:
+        print(f"{c.RED}[!]{c.RESET} Ocorreu um erro com a leitura de sua mensagem")
 
     # 'a' na posição ASCII = 97
     # 'A' na posição ASCII = 65
@@ -108,7 +111,7 @@ def Criptografar():
     # Alfabeto maiusculo em ASCII: 65 a 90
     # Alfabeto minusculo em ASCII: 97 a 122
 
-    print("[!] Mensagem codificada: ", end="")
+    print(f"{c.GREEN}[!]{c.RESET} Mensagem codificada: ", end="")
     for elem in mensagem:
         if elem == " ":
             print(" ", end="")
@@ -142,38 +145,34 @@ def Criptografar():
 
     print("")
 
-    continuar = input("\n" + "[!] Tecle ENTER para voltar ao menu ou digite 'exit' para sair: ")
+    continuar = input("\n" + f"{c.GREEN}[!]{c.RESET} Tecle ENTER para voltar ao menu ou digite 'exit' para sair: ")
     continuar.lower()
     if continuar == "":
         Main()
     elif continuar == "exit":
         Sair()
     else:
-        print("[!] Comando inválido, voltando ao menu...")
-        print("")
+        print(f"{c.RED}[!]{c.RESET} Comando inválido, voltando ao menu...\n")
         Main()
 
 def BruteForce():
+    print(f"{c.GREEN}> BruteForce{c.RESET}\n")
 
-    print("> Bruteforce")
-    print("")
-    print('[!] Digite "help" para ver como usar')
-    temp = input("[!] Escolha um range de chaves com um espaço entre os dois: ")
+    print(f"{c.GREEN}[!]{c.RESET}" + ' Digite "help" para ver como usar')
+    temp = input(f"{c.GREEN}[!]{c.RESET} Escolha um range de chaves com um espaço entre os dois: ")
     temp.lower()
     if temp == 'help':
-        print("")
-        print("Como usar:")
+        print(f"\n{c.GREEN}Como usar:{c.RESET}")
         print("É preciso inserir dois valores, e um espaço entre eles")
-        print('Ex: "1 27" --> O programa irá te mostrar o resultado de cada chave de 1 a 27')
+        print('Ex: "1 27" -> O programa irá te mostrar o resultado de cada chave de 1 a 27')
         BruteForce()
     else:
-
         # lista com o range das chaves/keys (range brute force)
         rangebf = []
         rangebf = temp.strip('').split(' ')
         if len(rangebf) != 2:
             print("")
-            print("[!] Insira um valor válido, digite help para ver como usar")
+            print(f"{c.RED}[!]{c.RESET} Insira um valor válido, digite help para ver como usar")
             BruteForce()
         else:
             rangekey = int(rangebf[1])
@@ -182,14 +181,14 @@ def BruteForce():
     try:
         mensagem = input("Digite a mensagem criptografada: ")
     except:
-        print("Ocorreu um erro com a leitura de sua mensagem")
+        print(f"{c.RED}[!]{c.RESET} Ocorreu um erro com a leitura de sua mensagem")
 
     print("")
 
     rotkey = int(rangebf[0])
 
     for key in range(rotkey, (rangekey + 1)):
-        print(f'Descriptografando com a chave "{key}": ', end="")
+        print(f"Descriptografando com a chave{c.GREEN}" + f" {key}{c.RESET}: ", end="")
         for elem in mensagem:
             temp = key
             # É possível usar a operação "%" para isso, porém quis exemplificar melhor
@@ -234,31 +233,17 @@ def BruteForce():
 
     print("")
 
-    continuar = input("\n" + "[!] Tecle ENTER para voltar ao menu ou digite 'exit' para sair: ")
+    continuar = input("\n" + f"{c.GREEN}[!]{c.RESET} Tecle ENTER para voltar ao menu ou digite \"exit\" para sair: ")
     continuar.lower()
     if continuar == "":
         Main()
     elif continuar == "exit":
         Sair()
     else:
-        print("[!] Comando inválido, voltando ao menu...")
-        print("")
+        print(f"{c.RED}[!]{c.RESET} Comando inválido, voltando ao menu...\n")
         Main()
 
-def Menu():
-
-    print("")
-    print("Caesar Cipher, por: caioreigot")
-    print("------------------------")
-    print("| [1] Criptografar     |")
-    print("| [2] Descriptografar  |")
-    print("| [3] Brute Force      |")
-    print("| [4] Sair             |")
-    print("------------------------")
-    print("")
-
 def Main():
-
     limparConsole()
 
     Menu()
@@ -269,29 +254,24 @@ def Main():
             escolha = int(input("Digite a opção desejada: "))
         except:
             print("Insira um número válido")
+            
         if (escolha in [1, 2, 3, 4]):
-            limparConsole()
             break
         else:
-            print("[!] Digite um número válido (1, 2, 3 ou 4)")
+            print(f"{c.RED}[!]{c.RESET} Digite um número válido (1, 2, 3 ou 4)")
 
-    if escolha == 1:
-        Criptografar()
-                
-    elif escolha == 2:
-        Descriptografar()
-                 
-    elif escolha == 3:
-        BruteForce()      
-
-    elif escolha == 4:
-        Sair()
+    match escolha:
+        case 1:
+            Criptografar()
+        case 2:
+            Descriptografar()
+        case 3:
+            BruteForce()
+        case 4:
+            Sair()
 
 def Sair():
-    print("")
-    print("[!] Obrigado por usar! Saindo...")
-    print("")
-    exit
+    print(f"\n{c.GREEN}[!]{c.RESET} Obrigado por usar! Saindo...\n")
+    exit()
 
-# após a leitura de todo o arquivo, o programa chama a função Main()
 Main()
