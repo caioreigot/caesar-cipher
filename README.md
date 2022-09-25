@@ -1,5 +1,5 @@
 # Caesar Cipher
-Programa que criptografa/descriptografa e faz brute force em uma Cifra de César.
+Programa que criptografa/descriptografa e faz brute force em uma Cifra de César (fins educativos).
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/62410044/192166832-c1d9b3db-6c3b-4461-8e0b-68caa4c7aa3e.png">
